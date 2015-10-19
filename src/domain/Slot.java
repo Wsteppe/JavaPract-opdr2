@@ -39,7 +39,6 @@ public class Slot {
 	}
 	
 	public boolean isGeheimGevonden(){
-		
 		boolean gevonden = false;
 		return gevonden;
 	}

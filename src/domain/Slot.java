@@ -41,7 +41,12 @@ public class Slot {
 	}
 	
 	public String getSlotKombinatie() {
-		return this.geheimeCode;
+		String code = "";
+		
+		for(Teller teller : this.getTellers()){
+			code += teller.getHuidigeWaarde();
+		}
+		return code;
 	}
 	
 	public void updateHuidigeWaardeTeller(int tellerNummer){

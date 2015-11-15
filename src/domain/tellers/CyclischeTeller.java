@@ -1,7 +1,5 @@
 package domain.tellers;
 
-import java.util.ArrayList;
-
 public class CyclischeTeller extends Teller{
 	
 	public CyclischeTeller(char a){

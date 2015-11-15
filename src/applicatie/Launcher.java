@@ -11,9 +11,9 @@ public class Launcher{
    public static void main( String[] args ){
       JFrame bedieningVenster = new JFrame( "Knack die code" );
       
-      Teller t1= new CyclischeTeller('a','b','c');
+      Teller t1= new CyclischeTeller(new Character[]{'a', 'b', 'c'});
       Teller t2=new TerugLoopTeller();
-      Teller t3=new CyclischeTeller('*','+','@');  
+      Teller t3=new CyclischeTeller(new Character[]{'*','+','@'});  
       ArrayList<Teller>tellers =new ArrayList<Teller>();
       tellers.add(t1); tellers.add(t2); tellers.add(t3);
       String geheimeCode = "a4+";

@@ -11,6 +11,10 @@ public abstract class Teller implements Cloneable, Serializable{
 		this('0','1','2','3','4','5','6','7','8','9');
 	}
 	
+	public void setMogelijkeWaarden(Character[] mogelijkeWaarden) {
+		this.mogelijkeWaarden = mogelijkeWaarden;
+	}
+
 	public Teller(Character...waarden){
 		this.mogelijkeWaarden = waarden;
 	}
@@ -34,7 +38,10 @@ public abstract class Teller implements Cloneable, Serializable{
 	public void resetHuidigeWaarde() {
 		this.huidigeIndex=0;
 	}
-
+	
+	/*
+	 * implemented in children classes, updates index
+	 */
 	public abstract void updateHuidigeWaarde();
 	
 	public Teller clone() throws CloneNotSupportedException{

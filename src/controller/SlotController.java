@@ -66,30 +66,41 @@ public class SlotController {
 			 	case CLOSED:
 			 		aantalPogingen++;
 			 		logTekst = "Poging "+aantalPogingen+" "+slot.getSlotKombinatie()+" FOUTE CODE!";
-			 		boolean isGeheimGevonden = slot.isGeheimGevonden();			 		 
+			 		boolean isGeheimGevonden = slot.isGeheimGevonden();			 		
 					 if (isGeheimGevonden){
 						 //TODO
+						 logTekst = "Kluis werd succesvol geopend!";
+						 slotStatus = SlotStatus.OPEN;
 					 }
 					 else{
-						 if (aantalPogingen == MAX_AANTAL_POGINGEN){
-							 //TODO
+						 //TODO
+						 if(slot.getSlotKombinatie().equals(slot.getGeheimeCode())){
+							 slotStatus = SlotStatus.OPEN;
+							 logTekst = "Kluis werd succesvol geopend!";
+						 } else	if (aantalPogingen == MAX_AANTAL_POGINGEN){
+							 logTekst = "Slot werd geblokkeerd, volgende pogingen vereisen deblokkeringscode";
+							 slotStatus =SlotStatus.BLOCKED;
 						 }
 					 }					 
 					 break;
 			 	case BLOCKED:
-			 		logTekst  = "Deblokkering slot mislukt";
-			 		String deblokCode = JOptionPane.showInputDialog("Typ deblokkeercode");
-			 		if (deblokCode.equals(DEBLOK_CODE)){
-			 			 slotStatus = SlotStatus.CLOSED;
-						 bedieningsPanel.setTekstForControleButton("OPEN KLUIS");
-						 slot.resetTellers();
-						 resetTellers();
-						 bedieningsPanel.setSlotButtonsActief(true);
-						 aantalPogingen = 0;
-						 logTekst = "Slot succesvol gedeblokkeerd";
+			 		try{
+				 		logTekst  = "Deblokkering slot mislukt";
+				 		String deblokCode = JOptionPane.showInputDialog("Typ deblokkeercode");
+				 		if (deblokCode.equals(DEBLOK_CODE)){
+				 			 slotStatus = SlotStatus.CLOSED;
+							 bedieningsPanel.setTekstForControleButton("OPEN KLUIS");
+							 slot.resetTellers();
+							 resetTellers();
+							 bedieningsPanel.setSlotButtonsActief(true);
+							 aantalPogingen = 0;
+							 logTekst = "Slot succesvol gedeblokkeerd";
+				 		}
+			 		} catch (Exception exe){
+			 			return;
 			 		}
 			 }	
-			 bedieningsPanel.updateLogTekst( logTekst);  
+			 bedieningsPanel.updateLogTekst(logTekst);  
 		 }		 
 	}
 }

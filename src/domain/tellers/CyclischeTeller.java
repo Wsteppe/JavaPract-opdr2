@@ -1,0 +1,26 @@
+package domain.tellers;
+
+public class CyclischeTeller extends Teller{
+	
+	public CyclischeTeller(){
+	}
+	
+	public CyclischeTeller(Character[] arrayWaarden){
+		this.setMogelijkeWaarden(arrayWaarden);
+	}
+
+	@Override
+	public void updateHuidigeWaarde() {
+		// TODO Auto-generated method stub
+			int currentIndex = this.getHuidigeIndex();
+			int arrayLength = this.getMogelijkeWaarden().length;
+			
+			if(currentIndex == arrayLength -1){
+				this.setHuidigeIndex(0);
+			} else{
+				this.setHuidigeIndex(currentIndex + 1);
+			}				
+	}
+	
+
+}

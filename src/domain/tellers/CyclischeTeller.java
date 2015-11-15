@@ -1,9 +1,12 @@
 package domain.tellers;
 
+import java.util.ArrayList;
+
 public class CyclischeTeller extends Teller{
 	
-	public CyclischeTeller(){
+	public CyclischeTeller(char a){
 	}
+		
 	
 	public CyclischeTeller(Character[] arrayWaarden){
 		this.setMogelijkeWaarden(arrayWaarden);

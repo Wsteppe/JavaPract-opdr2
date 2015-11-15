@@ -11,9 +11,9 @@ public class Main
       
       JFrame application = new JFrame( "Knack die code" );
       
-      Teller t1= new CyclischeTeller('a','b','c');
+      Teller t1= new CyclischeTeller(new Character[]{'a', 'b', 'c'});
       Teller t2=new TerugLoopTeller();
-      Teller t3=new CyclischeTeller('*','+','@');
+      Teller t3=new CyclischeTeller(new Character[]{'*','+','@'});
       Object[]w=new Character[2];
       w[0]='z'; w[1]= 'h';
       Object[] passed = {w};
